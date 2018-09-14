@@ -1,0 +1,34 @@
+<div class="container">
+  <img *ngIf="!loadDataStatus"
+       class="icon-wait"
+       src="./assets/img/icons/wait.svg"
+       alt="wait"
+  >
+  <div class="film"
+       *ngIf="loadDataStatus"
+  >
+    <img class="film__poster" src="{{poster !== 'N/A' ? poster : './assets/img/video.png'}}" alt="poster">
+    <div class="film__description">
+      <h2>{{title}}</h2>
+      <div class="elem" *ngFor="let elem of data">
+        <span class="elem__caption">{{elem.key+': '}}</span>
+        <span class="elem__value">{{elem.value}}</span>
+      </div>
+      <h4 class="film__ratings-caption">Ratings</h4>
+      <div class="film__ratings">
+        <div
+                class="rating"
+                *ngFor="let elem of rating"
+        >
+          <span class="rating__name">{{elem.Source}}</span>
+          <span class="rating__value">{{elem.Value}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="close-button"
+       (click)="dataService.moreInfoViewStatus = false"
+  >
+    Close
+  </div>
+</div>

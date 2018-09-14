@@ -1,0 +1,37 @@
+<form class="wrapper">
+  <mat-form-field class="search-form">
+    <input
+            class="search-form__input"
+            type="text"
+            matInput
+            [formControl]="search"
+            [matAutocomplete]="auto"
+    >
+    <mat-autocomplete
+            #auto="matAutocomplete"
+            [displayWith]="titleView"
+    >
+      <mat-option
+              *ngFor="let elem of dataService.list"
+              [value]="elem"
+              (onSelectionChange)="selectedFilm(elem)"
+      >
+        {{elem.Title}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <div class="icon-block">
+    <img
+            *ngIf="!whaitStatus"
+            class="icon-block__img"
+            src="./assets/img/icons/search.svg"
+            alt="search"
+    >
+    <img
+            *ngIf="whaitStatus"
+            class="icon-block__img"
+            src="./assets/img/icons/wait.svg"
+            alt="search"
+    >
+  </div>
+</form>

@@ -1,0 +1,46 @@
+<ng-scrollbar [style.width] = "'100%'">
+    <div class="scroll-container">
+        <div class="film"
+             *ngFor="let elem of dataService.selectedFilm"
+        >
+            <div class="film__poster"
+                 [style.background-image] = "'url('+getPosterUrl(elem.Poster)+')'"
+                 [style.background-size] = "'cover'"
+                 [style.background-repeat] = "'no-repeat'"
+                 [style.background-position] = "'center center'"
+            >
+
+            </div>
+            <div class="film__description">
+                <div class="description__elem">
+                    <span class="elem__caption">Title: </span>
+                    <span class="elem__value">{{elem.Title}}</span>
+                </div>
+                <div class="description__elem">
+                    <span class="elem__caption">Year: </span>
+                    <span class="elem__value">{{elem.Year}}</span>
+                </div>
+                <div class="description__elem">
+                    <span class="elem__caption">imdb: </span>
+                    <span class="elem__value">{{elem.imdbID}}</span>
+                </div>
+                <div class="description__elem">
+                    <span class="elem__caption">Type: </span>
+                    <span class="elem__value">{{elem.Type}}</span>
+                </div>
+            </div>
+            <div class="btn-container">
+                <div class="film__button film__button_remove"
+                     (click)="dataService.filmSelect(elem, dataService.filmStatus(elem))"
+                >
+                    <span>-</span>
+                </div>
+                <div class="film__button film__info"
+                     (click)="dataService.moreInfoViewStatus = true; dataService.selectedImdbID = elem.imdbID"
+                >
+                    <span>i</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-scrollbar>

@@ -1,0 +1,8 @@
+<div class="wrapper">
+    <app-search></app-search>
+    <div class="films-container">
+        <app-result></app-result>
+        <app-selected></app-selected>
+    </div>
+</div>
+<app-more-info *ngIf="dataService.moreInfoViewStatus" [imdbID]="dataService.selectedImdbID"></app-more-info>
